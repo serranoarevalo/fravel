@@ -10,6 +10,8 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +42,17 @@ class HomeScreen extends StatelessWidget {
                       ],
                     )
                   ],
-                )
+                ),
+                Container(
+                  width: 45,
+                  height: 45,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: NetworkImage(
+                              "https://cdn-images-1.medium.com/fit/c/32/32/1*ZRTyJhRlX1MGCKNOQiqJsg.jpeg"))),
+                ),
               ],
             )
           ],
