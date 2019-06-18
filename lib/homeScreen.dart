@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fravel/destinationCarousel.dart';
 import 'package:fravel/header.dart';
+import 'package:fravel/tabs.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -13,6 +14,7 @@ class HomeScreen extends StatelessWidget {
           children: <Widget>[
             Container(margin: EdgeInsets.only(bottom: 30), child: Header()),
             DestinationCarousel(),
+            Tabs()
           ],
         ),
       ),

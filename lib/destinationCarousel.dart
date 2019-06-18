@@ -16,6 +16,8 @@ class DestinationCarousel extends StatelessWidget {
         "https://images.unsplash.com/photo-1560780551-bd5d3eacd2c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"),
     Destination("Genteng Lembang", "Two Months Ago", 4.3,
         "https://images.unsplash.com/photo-1560713274-b1522b37f88b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"),
+    Destination("Hong Kong", "A Year Ago", 4.8,
+        "https://images.unsplash.com/photo-1557845973-9e1924e7f729?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"),
   ];
 
   List<Widget> renderDestinations() {
@@ -26,14 +28,31 @@ class DestinationCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 250,
-        child: ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 30),
-            scrollDirection: Axis.horizontal,
-            itemCount: destinations.length,
-            itemBuilder: (context, int index) =>
-                DestinationCard(data: destinations[index])));
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(bottom: 20),
+            child: SizedBox(
+                height: 225,
+                child: ListView.builder(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: destinations.length,
+                    itemBuilder: (context, int index) =>
+                        DestinationCard(data: destinations[index]))),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 30),
+            child: Text(
+              "VIEW ALL",
+              style: TextStyle(
+                  color: Colors.orangeAccent,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600),
+            ),
+          )
+        ]);
   }
 }
 
@@ -48,7 +67,7 @@ class DestinationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(right: 10),
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(15),
         width: 150,
         decoration: BoxDecoration(
             color: Colors.black,
