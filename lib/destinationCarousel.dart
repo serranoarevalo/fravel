@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Destination {
   final String title;
@@ -17,18 +17,23 @@ class DestinationCarousel extends StatelessWidget {
     Destination("Genteng Lembang", "Two Months Ago", 5,
         "https://images.unsplash.com/photo-1560713274-b1522b37f88b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"),
   ];
+
+  List<Widget> renderDestinations() {
+    final r = destinations.map((d) => DestinationCard(data: d)).toList();
+    print(r);
+    return r;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+        height: 250,
         child: ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: destinations.length,
-      itemBuilder: (context, int index) => Container(
-          margin: EdgeInsets.only(right: 10),
-          height: 350,
-          width: 150,
-          child: DestinationCard(data: destinations[index]),
-    ));
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            scrollDirection: Axis.horizontal,
+            itemCount: destinations.length,
+            itemBuilder: (context, int index) =>
+                DestinationCard(data: destinations[index])));
   }
 }
 
@@ -41,6 +46,19 @@ class DestinationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(data.title);
+    return Container(
+        margin: EdgeInsets.only(right: 10),
+        padding: EdgeInsets.all(20),
+        width: 150,
+        alignment: Alignment.bottomLeft,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            image: DecorationImage(
+                fit: BoxFit.cover, image: NetworkImage(data.photoUrl))),
+        child: Text(data.title,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w600)));
   }
 }
