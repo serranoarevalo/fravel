@@ -68,8 +68,18 @@ class DestinationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Detail.routeName,
-            arguments: DetailArguments(data.photoUrl, data.title));
+        Navigator.of(context).push(
+          PageRouteBuilder(pageBuilder: (BuildContext context,
+              Animation<double> animation,
+              Animation<double> secondaryAnimation) {
+            return Detail(data.photoUrl, data.title);
+          }, transitionsBuilder: (BuildContext context,
+              Animation<double> animation,
+              Animation<double> secondaryAnimation,
+              Widget child) {
+            return FadeTransition(opacity: animation, child: child);
+          }),
+        );
       },
       child: Container(
           margin: EdgeInsets.only(right: 10),
