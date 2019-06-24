@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:fravel/destinationCarousel.dart';
 import 'package:fravel/header.dart';
 import 'package:fravel/tabs.dart';

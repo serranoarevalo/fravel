@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fravel/destinationDetail.dart';
 
 class Destination {
   final String title;
@@ -65,47 +66,56 @@ class DestinationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.only(right: 10),
-        padding: EdgeInsets.all(15),
-        width: 150,
-        decoration: BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            image: DecorationImage(
-                colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.7), BlendMode.dstATop),
-                fit: BoxFit.cover,
-                image: NetworkImage(data.photoUrl))),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, Detail.routeName,
+            arguments: DetailArguments(data.photoUrl, data.title));
+      },
+      child: Hero(
+        tag: "detailHero${data.title}",
+        child: Container(
+            margin: EdgeInsets.only(right: 10),
+            padding: EdgeInsets.all(15),
+            width: 150,
+            decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                image: DecorationImage(
+                    colorFilter: ColorFilter.mode(
+                        Colors.black.withOpacity(0.7), BlendMode.dstATop),
+                    fit: BoxFit.cover,
+                    image: NetworkImage(data.photoUrl))),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(
-                    data.rating.toString(),
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  )
-                ],
-              ),
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                        margin: EdgeInsets.only(bottom: 7),
-                        child: Text(data.title,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            ))),
-                    Container(
-                      child: Text(
-                        data.date,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    )
-                  ])
-            ]));
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Text(
+                        data.rating.toString(),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      )
+                    ],
+                  ),
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                            margin: EdgeInsets.only(bottom: 7),
+                            child: Text(data.title,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ))),
+                        Container(
+                          child: Text(
+                            data.date,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        )
+                      ])
+                ])),
+      ),
+    );
   }
 }
