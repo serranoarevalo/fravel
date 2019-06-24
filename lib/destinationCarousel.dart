@@ -75,15 +75,18 @@ class DestinationCard extends StatelessWidget {
           margin: EdgeInsets.only(right: 10),
           width: 150,
           child: Stack(children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  image: DecorationImage(
-                      colorFilter: ColorFilter.mode(
-                          Colors.black.withOpacity(0.7), BlendMode.dstATop),
-                      fit: BoxFit.cover,
-                      image: NetworkImage(data.photoUrl))),
+            Hero(
+              tag: "detailHero${data.title}",
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    image: DecorationImage(
+                        colorFilter: ColorFilter.mode(
+                            Colors.black.withOpacity(0.7), BlendMode.dstATop),
+                        fit: BoxFit.cover,
+                        image: NetworkImage(data.photoUrl))),
+              ),
             ),
             Container(
               padding: EdgeInsets.all(15),
