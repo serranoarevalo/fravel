@@ -29,12 +29,17 @@ class Detail extends StatelessWidget {
             ),
             Container(
               child: Center(
-                child: Text(this.title,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 22,
-                    )),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(this.title,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 22,
+                      )),
+                ),
               ),
             )
           ],
