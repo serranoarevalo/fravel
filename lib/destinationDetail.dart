@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Detail extends StatelessWidget {
@@ -30,46 +31,49 @@ class Detail extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 70),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 70),
+                child: FadeIn(
+                  duration: Duration(milliseconds: 500),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Icon(
-                          FontAwesomeIcons.angleLeft,
-                          color: Colors.white,
-                          size: 32,
-                        ),
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Icon(
+                              FontAwesomeIcons.angleLeft,
+                              color: Colors.white,
+                              size: 32,
+                            ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              this.title,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 38),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: Text(
+                              this.description,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          )
+                        ],
                       )
                     ],
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          this.title,
-                          style: TextStyle(color: Colors.white, fontSize: 38),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 20),
-                        child: Text(
-                          this.description,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            )
+                ))
           ],
         ),
       ),
