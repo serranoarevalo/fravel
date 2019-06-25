@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fravel/destinationDetail.dart';
 
 class Destination {
@@ -86,6 +87,7 @@ class DestinationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
         Navigator.of(context).push(
           PageRouteBuilder(pageBuilder: (BuildContext context,
               Animation<double> animation,

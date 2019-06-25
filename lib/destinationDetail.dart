@@ -12,7 +12,6 @@ class Detail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return Scaffold(
       body: Container(
         child: Stack(
@@ -42,6 +41,8 @@ class Detail extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               Navigator.of(context).pop();
+                              SystemChrome.setSystemUIOverlayStyle(
+                                  SystemUiOverlayStyle.dark);
                             },
                             child: Icon(
                               FontAwesomeIcons.angleLeft,
