@@ -6,19 +6,37 @@ class Destination {
   final String date;
   final String photoUrl;
   final double rating;
-  Destination(this.title, this.date, this.rating, this.photoUrl);
+  final String description;
+  Destination(
+      this.title, this.date, this.rating, this.photoUrl, this.description);
 }
 
 class DestinationCarousel extends StatelessWidget {
   final List<Destination> destinations = [
-    Destination("Antelope Canyon", "Yesterday", 4.7,
-        "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"),
-    Destination("Kamchatka Peninsula", "A week ago", 4.9,
-        "https://images.unsplash.com/photo-1560780551-bd5d3eacd2c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"),
-    Destination("Genteng Lembang", "Two Months Ago", 4.3,
-        "https://images.unsplash.com/photo-1560713274-b1522b37f88b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"),
-    Destination("Hong Kong", "A Year Ago", 4.8,
-        "https://images.unsplash.com/photo-1557845973-9e1924e7f729?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"),
+    Destination(
+        "Antelope Canyon",
+        "Yesterday",
+        4.7,
+        "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends."),
+    Destination(
+        "Kamchatka Peninsula",
+        "A week ago",
+        4.9,
+        "https://images.unsplash.com/photo-1560780551-bd5d3eacd2c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends."),
+    Destination(
+        "Genteng Lembang",
+        "Two Months Ago",
+        4.3,
+        "https://images.unsplash.com/photo-1560713274-b1522b37f88b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends."),
+    Destination(
+        "Hong Kong",
+        "A Year Ago",
+        4.8,
+        "https://images.unsplash.com/photo-1557845973-9e1924e7f729?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends."),
   ];
 
   List<Widget> renderDestinations() {
@@ -72,7 +90,7 @@ class DestinationCard extends StatelessWidget {
           PageRouteBuilder(pageBuilder: (BuildContext context,
               Animation<double> animation,
               Animation<double> secondaryAnimation) {
-            return Detail(data.photoUrl, data.title);
+            return Detail(data.photoUrl, data.title, data.description);
           }, transitionsBuilder: (BuildContext context,
               Animation<double> animation,
               Animation<double> secondaryAnimation,

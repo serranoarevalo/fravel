@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Detail extends StatelessWidget {
   final String photoUrl;
   final String title;
+  final String description;
 
-  Detail(this.photoUrl, this.title);
+  Detail(this.photoUrl, this.title, this.description);
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +30,44 @@ class Detail extends StatelessWidget {
               ),
             ),
             Container(
-              child: Center(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(this.title,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 22,
-                      )),
-                ),
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 70),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Icon(
+                          FontAwesomeIcons.angleLeft,
+                          color: Colors.white,
+                          size: 32,
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          this.title,
+                          style: TextStyle(color: Colors.white, fontSize: 38),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        child: Text(
+                          this.description,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
+                    ],
+                  )
+                ],
               ),
             )
           ],
